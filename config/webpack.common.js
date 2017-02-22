@@ -59,8 +59,7 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'main': AOT ? './src/main.browser.aot.ts' : './src/main.browser.ts'
 
     },
 
@@ -107,8 +106,7 @@ module.exports = function (options) {
          */
         {
           test: /\.ts$/,
-          use: [
-            {
+          use: [{
               loader: '@angularclass/hmr-loader',
               options: {
                 pretty: !isProd,
@@ -188,8 +186,8 @@ module.exports = function (options) {
         },
 
         /* File loader for supporting fonts, for example, in CSS files.
-        */
-        { 
+         */
+        {
           test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
           use: 'file-loader'
         }
@@ -264,9 +262,13 @@ module.exports = function (options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
+      new CopyWebpackPlugin([{
+          from: 'src/assets',
+          to: 'assets'
+        },
+        {
+          from: 'src/meta'
+        }
       ]),
 
 
@@ -356,6 +358,11 @@ module.exports = function (options) {
         disabled: !AOT,
         tsConfig: helpers.root('tsconfig.webpack.json'),
         resourceOverride: helpers.root('config/resource-override.js')
+      }),
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
       })
 
     ],

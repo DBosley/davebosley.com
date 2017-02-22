@@ -16,22 +16,10 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
   ],
   template: `
-    <nav>
-  
-    </nav>
-
-    <main>
-      it works!
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-     
-    </footer>
+ 
+      <router-outlet></router-outlet>
   `
 })
 export class AppComponent implements OnInit {
@@ -40,7 +28,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public appState: AppState
-  ) {}
+  ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);

@@ -114,6 +114,18 @@ module.exports = function (env) {
           include: [helpers.root('src', 'styles')]
         },
 
+        /*
+         * Extract and compile less files from .src/styles directory to external CSS file
+         */
+        {
+          test: /\.less$/,
+          loader: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader!less-loader'
+          }),
+          include: [helpers.root('src', 'styles')]
+        },
+
       ]
 
     },

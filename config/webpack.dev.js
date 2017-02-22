@@ -127,6 +127,17 @@ module.exports = function (options) {
           include: [helpers.root('src', 'styles')]
         },
 
+        /*
+         * less loader support for *.less files (styles directory only)
+         * Loads external less styles into the DOM, supports HMR
+         *
+         */
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader', 'less-loader'],
+          include: [helpers.root('src', 'styles')]
+        },
+
       ]
 
     },
